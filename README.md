@@ -2,7 +2,7 @@
 
 This is a simple route planner for EV charging stations. Given a departure location, a destination and the autonomy in km of the electical vehicle fully charged, it will return the optimal route to the destination with intermediate stops at the displayed charging stations. Consumes OpenChargeMap API and OpenStreetMap API from the leaflet library.
 
-WebApp is served here: [formidablea-ev-route-planner.netlify.app](https://formidablea-ev-route-planner.netlify.app)
+WebApp is served here: [formidablae-ev-route-planner.netlify.app](https://formidablae-ev-route-planner.netlify.app)
 
 ## Visual state of the project
 
