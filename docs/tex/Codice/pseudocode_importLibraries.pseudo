@@ -1,0 +1,9 @@
+/**
+ * Import libraries.
+ */
+import leaflet // map generation and manipulation
+import LMap, LTileLayer from vue2-leaflet // map generation and manipulation
+import vue-places // address coordinate translation
+import leaflet-routing-machine // route finding engine
+import leaflet-control-geocoder // markers and description for points in map
+import axios // API GET to fetch charger data

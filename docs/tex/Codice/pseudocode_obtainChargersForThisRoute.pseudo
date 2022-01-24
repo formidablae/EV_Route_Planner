@@ -1,0 +1,26 @@
+/**
+ * Obtains chargers for route being considered
+ */
+async obtainChargersForThisRoute(numberOfStopsArg, stopCircleCenterPointsArg) {
+    let maxRadius <- travelData.carAutonomy * ((1 - configValues.batteryPercentageUsage) / 2)
+    let radius <- configValues.minRadius // Set to minimum the initial radius of the circle area where to search for chargers of this stop.
+    let thisPointsIndex <- 0 // Consider the first charger. Will be incremented in next inner iterarions.
+    let finalChargersData <- new Array[]
+    while (thisPointsIndex < numberOfStopsArg && radius <= maxRadius) { // Inner while loop. Iterate while all chargers needed were not yet found and radius is still smaller or equal to the maxRadius and not enough request failures happened.
+        let innerChargersData <- new Array[], distancesFromStopPoint <- new Array[] // distancesFromStopPoint: Empty (for now) array that will hold the distance of each charger found in the circle search area to the center coordinates of this stop point's. innerChargersData: new empty array.
+        let urlForApiRequest <- buildURL(stopCircleCenterPointsArg[thisPointsIndex], radius) // Build url for api request.
+        innerChargersData <- await getChargerData(urlForApiRequest)
+        if (innerChargersData == undefined || innerChargersData.length == 0) {
+            radius <- radius * configValues.radiusIncrementBy // If the response was undefined or contained no chargers in the circle area searched, increment the circle's radius and continue to the next iteration.
+            continue
+        }
+        for (let j <- 0; j < innerChargersData.length; j++) { // If the response contained at least one charger, fill the distancesFromStopPoint array with the squares of the distance (of each charger found) form this stop's circle area's center.
+            distancesFromStopPoint.push(getDistanceFromLatLonInKm(stopCircleCenterPointsArg[thisPointsIndex][0], stopCircleCenterPointsArg[thisPointsIndex][1], innerChargersData[j].AddressInfo.Latitude, innerChargersData[j].AddressInfo.Longitude))
+        }
+        let minDistanceIndex <- getSmallestElementsIndex(distancesFromStopPoint) // Find the index of the charger nearest to the center of the search circle.
+        finalChargersData.push(innerChargersData[minDistanceIndex])
+        radius <- configValues.minRadius // Reset the radius back to minimum.
+        thisPointsIndex++ // Increment the index to search for the next stop's chargers.
+    }
+    return finalChargersData
+}

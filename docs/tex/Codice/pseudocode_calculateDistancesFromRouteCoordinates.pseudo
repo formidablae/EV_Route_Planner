@@ -1,0 +1,19 @@
+/**
+ * Calculates distances from point to point of the route
+ * polyline being considered. Adds each distance to an array.
+ * Returns the array containing all distances, from point 0 to
+ * point 1, from point 1 to point 2, and like this till the last
+ * point.
+ */
+calculateDistancesFromRouteCoordinates(thisRouteArg) {
+    let segmentDistancesResult <- new Array[]
+    for (let coordIndex <- 1; coordIndex < thisRouteArg.coordinates.length; coordIndex++) {
+        let thisCoordCoupleDistanceVar <- getDistanceFromLatLonInKm(
+            thisRouteArg.coordinates[coordIndex - 1].lat,
+            thisRouteArg.coordinates[coordIndex - 1].lng,
+            thisRouteArg.coordinates[coordIndex].lat,
+            thisRouteArg.coordinates[coordIndex].lng)
+        segmentDistancesResult.push(thisCoordCoupleDistanceVar)
+    }
+    return segmentDistancesResult
+}

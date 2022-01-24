@@ -1,0 +1,36 @@
+/**
+ * From the segment distances calculated before and the number of
+ * stops needed that was found, this method finds the coordinates
+ * of the stops in the initial route. Those coordinates will
+ * become the centers of the circles where to search for
+ * chargers.
+ */
+getStopCircleCenterPoints(thisRouteArg, segmentDistancesArg) {
+    let stopCircleCenterPointsResult <- new Array[]
+    let distanceDriven <- 0, leftOver <- 0, distanceDifference <- 0, lastPartRatio <- 0
+    for (let thisSegmentDistanceIndex <- 0; thisSegmentDistanceIndex < segmentDistancesArg.length; thisSegmentDistanceIndex++) {
+        if ((distanceDriven + segmentDistancesArg[thisSegmentDistanceIndex]) < (travelData.carAutonomy * configValues.batteryPercentageUsage)) {
+            distanceDriven <- distanceDriven + segmentDistancesArg[thisSegmentDistanceIndex]
+        } else {
+            distanceDifference <- (travelData.carAutonomy * configValues.batteryPercentageUsage) - distanceDriven
+            lastPartRatio <- distanceDifference / segmentDistancesArg[thisSegmentDistanceIndex]
+            let latOfInsidePoint <- thisRouteArg.coordinates[thisSegmentDistanceIndex].lat + ((thisRouteArg.coordinates[thisSegmentDistanceIndex].lat - thisRouteArg.coordinates[thisSegmentDistanceIndex + 1].lat) * lastPartRatio)
+            let lngOfInsidePoint <- thisRouteArg.coordinates[thisSegmentDistanceIndex].lng + ((thisRouteArg.coordinates[thisSegmentDistanceIndex].lng - thisRouteArg.coordinates[thisSegmentDistanceIndex + 1].lng) * lastPartRatio)
+            stopCircleCenterPointsResult.push([latOfInsidePoint, lngOfInsidePoint])
+            leftOver <- segmentDistancesArg[thisSegmentDistanceIndex] - distanceDifference
+            if (leftOver <= travelData.carAutonomy * configValues.batteryPercentageUsage) {distanceDriven <- leftOver
+            } else {
+                while (leftOver >= (travelData.carAutonomy * configValues.batteryPercentageUsage)) {
+                    distanceDifference <- leftOver - (travelData.carAutonomy * configValues.batteryPercentageUsage)
+                    lastPartRatio <- (travelData.carAutonomy * configValues.batteryPercentageUsage) / leftOver
+                    latOfInsidePoint <- latOfInsidePoint + ((latOfInsidePoint - thisRouteArg.coordinates[thisSegmentDistanceIndex + 1].lat) * lastPartRatio)
+                    lngOfInsidePoint <- lngOfInsidePoint + ((lngOfInsidePoint - thisRouteArg.coordinates[thisSegmentDistanceIndex + 1].lng) * lastPartRatio)
+                    stopCircleCenterPointsResult.push([latOfInsidePoint, lngOfInsidePoint])
+                    leftOver <- leftOver - (travelData.carAutonomy * configValues.batteryPercentageUsage)
+                }
+                distanceDriven <- leftOver
+            }
+        }
+    }
+    return stopCircleCenterPointsResult
+}

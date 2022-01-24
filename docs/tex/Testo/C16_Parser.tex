@@ -1,0 +1,20 @@
+\section {Scelta funzioni da implementare} \hypertarget{section::\theHsection}
+Si è scelto di iniziare ad implementare le funzioni indispensabili del sistema da sviluppare tra cui la specifiche funzionali: R1, R6, R8 e i casi d'uso UC1 e UC2.
+
+Per la parte di comunicazione tra l'applicazione e le API esterne, si è scelto di utilizzare il formato JSON, mentre per lo scaricamento e l'aggiornamento delle colonnine di ricarica viene usata una normale connessione http.
+
+Lo scopo dell'applicazione é: date le colonnine di ricarica e il percorso da un punto A ad un punto B, essa calcolerà il percorso tenendo conto delle eventuali fermate per ricaricare l'auto.
+
+I dati forniti all'algoritmo per l'elaborazione sono:
+\begin{enumerate}
+\item la posizione delle colonnine di ricarica
+\item il percorso da un punto A ad un punto B
+\end{enumerate}
+
+Per la parte di comunicazione tra il nostro Server e le API è stato sviluppato un Parser che permette  una volta che il file viene scaricato dalle API di filtrarlo in base alle informazioni interessanti per il nostro progetto
+
+\begin{center}
+\textbf{\underline{INTERRUZIONE}}
+\end{center}
+
+Durante l'esecuzione di questa iterazione ci siamo resi conto che l'utilizzo del linguaggio Javascript per l'intero progetto avrebbe reso più agevole la realizzazione dello stesso. Abbiamo quindi deciso di interrompere questa iterazione e iniziare immediatamente la successiva dove illustreremo le modifiche effettuate all'iterazione 0 del processo.

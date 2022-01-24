@@ -1,0 +1,8 @@
+/**
+ * If route was found do the handling and next calculations.
+ */
+async handleRoutesFound(event) {
+    travelPath <- event.routes // get returned routes from OpenStreetMap API and assign them to travelPath
+    let calculationResults <- await getPathChargerCoordinates() // await charger coordinates from OpenChargeMap API
+    displayResults(calculationResults, map) // display results on map calling displayResults() method.
+}

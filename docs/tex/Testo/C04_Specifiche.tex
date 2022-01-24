@@ -1,0 +1,46 @@
+\section{Introduzione specifiche} \hypertarget{section::\theHsection}
+In questo capitolo analizzeremo le specifiche funzionali e non funzionali della applicazione da sviluppare.
+
+La priorità di una funzione è scelta in base a quante funzioni dipendono da essa:
+
+\begin{enumerate}
+\item \textbf{Alta}: è fondamentale implementarla prima di procedere con il macroblocco delle funzioni con
+media priorità. Sono funzioni da implementare principalmente l’una in serie con l’altra.
+\item \textbf{Media}: è fondamentale implementarla prima di procedere con il macroblocco delle funzioni
+con bassa priorità. È possibile implementare parallelamente queste funzioni.
+\item \textbf{Bassa priorità}: da loro non dipende nessuna funzione.
+\end{enumerate}
+
+\section{Specifiche funzionali} \hypertarget{section::\theHsection}
+Le specifiche funzionali dell'applicazione sono le seguenti:
+\begin{enumerate}
+\item \textbf{Calcolo del percorso}: una volta fornito la mappa delle colonnine e il percorso da un punto A ad un punto B l'app deve rielaborare i dati in modo da calcolare il nuovo percorso comprensivo di eventuali soste.
+\item \textbf{Iscrizione utente}: l'applicazione deve poter permettere all'utente l'iscrizione in modo da avere ulteriori servizi.
+\item \textbf{Modifica dati utente}: l'applicazione deve poter permettere all'utente la modifica dei propri dati all'interno del proprio profilo.
+\item \textbf{Esportazione tragitto}: quando l'applicazione restituisce un percorso all'utente, questi deve essere in grado di esportarlo in un formato opportuno.
+\item \textbf{Visualizzazioni statistiche}: l'utente dal proprio profilo è in grado di visualizzare le statistiche relative ai propri viaggi.
+\item \textbf{Mostra alternative percorso}: l'applicazione può mostrare all'utente le alternative al percorso precedentemente calcolato.
+\item \textbf{Memorizzazione luoghi preferiti}: l'utente è in grado di salvare i percorsi preferiti nel proprio profilo
+\item \textbf{Visualizzazione percorso}: l'utente è in grado di vedere il percorso calcolato dall'algoritmo su una mappa.
+\item \textbf{Visualizza dati utente}: l'utente è in grado di vedere i propri dati nell'apposito profilo utente.
+\end{enumerate}
+
+Sono riportati in Tabella 4.1 tutte le specifiche funzionali con le relative priorità.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|l|c|c|}
+\hline
+Codice & Nome                            & Priorità & Implementato \\ \hline
+R1     & Calcolo percorso                & A        & SI           \\ \hline
+R2     & Iscrizione utente               & M        & NO           \\ \hline
+R3     & Modifica dati utente            & B        & NO           \\ \hline
+R4     & Esportazione tragitto           & M        & NO           \\ \hline
+R5     & Visualizzazione statistiche     & B        & NO           \\ \hline
+R6     & Mostra alternative percorso     & A        & NO           \\ \hline
+R7     & Memorizzazione luoghi preferiti & M        & NO           \\ \hline
+R8     & Visualizza percorso             & A        & SI           \\ \hline
+R9     & Visualizza dati utente          & M        & NO           \\ \hline
+\end{tabular}
+\caption{Specifiche funzionali, priorità e implementazione}
+\end{table}

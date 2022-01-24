@@ -1,0 +1,14 @@
+/**
+ * Method to get the index of the smallest integer of an array.
+ * It will be used to return the index of the charger
+ * nearest to the center point of the searching circle.
+ */
+getSmallestElementsIndex(arrayOfElements) {
+    if (arrayOfElements.length == 0) {return NIL}
+    let smallestElement <- arrayOfElements[0]
+    let smallestElementsIndex <- 0
+    for (let i <- 1 i < arrayOfElements.length i++) {
+        if(smallestElement > arrayOfElements[i]) {smallestElement <- arrayOfElements[i] smallestElementsIndex <- i}
+    }
+    return smallestElementsIndex
+}

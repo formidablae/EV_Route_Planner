@@ -1,0 +1,38 @@
+/**
+ * After having done all the calculations and obtained a result
+ * on the charger locations where to stop for recharging,
+ * this method displays the results on the map inside the page.
+ */
+displayResults(calculationDataArg) {
+    let finalChargersData <- calculationDataArg[1]
+    if (!calculationDataArg[0]) {
+        $notify.warning('It wasn\'t possible to find an itinerary with chargers') // If itineraryFoundBool <- false, No itinerary found
+        return false // Failure
+    } else {
+        for (let k <- 0; k < finalChargersData.length; k++) {
+            setChargerMarker([finalChargersData[k].AddressInfo.Latitude, finalChargersData[k].AddressInfo.Longitude])
+                .bindTooltip(buildStringForTooltip(finalChargersData, k), setMarkerAttributes)
+                .addTo(map)
+                .openTooltip()
+        } // Add found charger markers to markersLayers group.
+        let finalChargersCoordinates <- new Array[]
+        finalChargersCoordinates.push([
+            startPointCoordinates.lat,
+            startPointCoordinates.lng
+        ]) // Add to finalChargersData start coordinates
+        finalChargersData.forEach(function(elementOfData) {
+            finalChargersCoordinates.push([elementOfData.AddressInfo.Latitude, elementOfData.AddressInfo.Longitude])
+        })
+        finalChargersCoordinates.push([
+            arrivalPointCoordinates.lat, arrivalPointCoordinates.lng
+        ]) // and end point coordinates, needed to compute whole itinerary.
+        finalTravelPath <- buildTravelPath(finalChargersCoordinates) // The path/itinerary computed on finalPathPointCoordinates points and to be showed on the map.
+        finalTravelPath.addTo(map)
+        if (finalChargersCoordinates.length == 2) {
+            $notify.success('No recharge needed') // Notify user no recharge needed for the trip.
+            return true // Success
+        } else {
+            return true // Success. Itinerary with chargers found.
+        }
+    }
+}

@@ -1,0 +1,25 @@
+/**
+ * Declare and initialize global variables.
+ */
+data() {
+	travelData <- {
+		startPoint <- NIL,
+		arrivalPoint <- NIL,
+		carAutonomy <- NIL
+	},
+	startPointCoordinates <- {},
+    arrivalPointCoordinates <- {},
+    zoom <- 6,
+    center <- {lat: 41.8719, lng: 12.5674},
+    url <- 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    departureMarker <- {},
+    arrivalMarker <- {},
+    travelPath <- NIL,
+    finalTravelPath <- NIL,
+    configValues <- {
+	    radiusIncrementBy <- 2,
+	    batteryPercentageUsage <- 0.7, //70%
+	    minRadius <- 1 // 1 km
+    },
+    markersLayers <- new layerGroup[]
+}

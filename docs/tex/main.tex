@@ -1,0 +1,314 @@
+\documentclass[11pt,twoside,openright,italian]{book} %Use "italian" to show bibliography enties in italian and "english" to show them in english
+\usepackage[utf8]{inputenc}
+\usepackage{subcaption}
+\usepackage{babel}
+\usepackage{csquotes}
+\usepackage{multirow}
+
+\usepackage{listings}
+\usepackage{color}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, let, if, in, while, do, else, case, break, continue},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstdefinelanguage{Bash}{
+  keywords={cd, ls, ls -l, rm, sudo, install, run, add, serve, build},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+\interfootnotelinepenalty=10000 %Prevents footnotes splitting across pages
+\usepackage{siunitx}
+\sisetup{%
+  inter-unit-product=\ensuremath{{}\cdot{}},
+  per-mode=symbol
+  }
+\usepackage{newtxtext,newtxmath,amsmath}
+\usepackage{float}
+\usepackage{ifthen}
+
+\newcommand{\nomunit}[1]{\renewcommand{\nomentryend}{\hspace*{\fill}[#1]}}
+
+\newcounter{savepage}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{wallpaper}
+%\usepackage[acronym,toc,shortcuts,translate=babel,nopostdot]{glossaries}
+%\usepackage{glossary-mcols} % glossary in columns
+\usepackage{float}
+%\makeglossaries
+%\glstoctrue
+\usepackage{float}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\usepackage{indentfirst}
+\renewcommand{\baselinestretch}{1.3}
+\usepackage{graphicx}
+\graphicspath{ {Immagini/} }
+\usepackage{caption}
+\usepackage[a4paper,
+			nomarginpar,
+            left=30mm,
+            right=30mm,
+            top=40mm,
+            bottom=40mm]{geometry}
+\usepackage{lipsum}
+\usepackage{enumitem}
+
+\usepackage{listings}
+\usepackage{xcolor}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}
+{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\setlist[enumerate]{itemsep=-1mm}
+\marginparpush=0pt
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{26pt}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhf{}
+\fancyhead{}
+\fancyhead[C]{\hyperref[Indice_generale]{Indice} > \hyperlink{part::\theHpart}{Parte \theHpart} > \hyperlink{chapter::\theHchapter}{\theHchapter\ \leftmark} > \hyperlink{section::\theHsection}{\theHsection\ \rightmark}}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+
+\newcommand\blfootnote[1]{% %footnote without number: \blfootnote{examole}
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\usepackage{mathtools}
+\newtagform{equationwithname}{Equazione }{}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptername}{Capitolo}
+\renewcommand{\appendixname}{Appendice}
+\renewcommand{\listfigurename}{Indice delle figure}
+\renewcommand{\contentsname}{Indice generale}
+\renewcommand{\listtablename}{Indice delle tabelle}
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Tabella}
+\renewcommand{\partname}{Parte}
+\usepackage[backend=biber,
+            citestyle=verbose-ibid,
+            sorting=none,
+%            citereset=part, % Not working, using chngcntr and counterwithout
+            bibstyle=numeric,
+            autocite=footnote,
+            doi=true,
+            url=true,
+            maxnames=99, % Show all authors in citation footnotes and bibliography
+            ]{biblatex}
+
+\defbibenvironment{bibliography} % Enumeration of entries in bibliography
+  {\enumerate
+     {}
+     {\setlength{\leftmargin}{\bibhang}%
+      \setlength{\itemindent}{-\leftmargin}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}}
+  {\endenumerate}
+  {\item}
+
+\makeatletter
+
+\renewbibmacro*{cite:full}{
+  \usebibmacro{cite:full:citepages}
+  \printtext[bibhypertarget]{
+    \usedriver
+      {\DeclareNameAlias{sortname}{default}}
+      {\thefield{entrytype}}}
+  \usebibmacro{shorthandintro}
+  \csxdef{cbx@\thefield{entrykey}@footnotenumber}{\the\value{footnote}}
+}
+
+\DeclareFieldFormat{prefixnumber}{}
+\DeclareFieldFormat{labelnumber}{\csuse{cbx@\thefield{entrykey}@footnotenumber}}
+
+\makeatother
+
+\usepackage{chngcntr}
+\counterwithout*{footnote}{chapter}
+\renewcommand*\thefootnote{\textcolor{Sepia}{[\arabic{footnote}]}}
+\addbibresource{Testo/Z04_Bibliografia.bib}
+\setlength\bibitemsep{3.0\itemsep}
+\usepackage{adjustbox}
+%\usepackage{showframe}
+\usepackage[bookmarks]{hyperref}
+\usepackage[open,openlevel=0]{bookmark}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,
+            urlcolor=blue,
+            linkcolor=MidnightBlue,
+            citecolor=red,
+            bookmarksopen=true,
+            pdfstartview={Fit},
+            pdffitwindow=true,
+			breaklinks=true,
+            pdftitle={Documentazione del lavoro di gruppo - Informatica III - Modulo Progettazione e Algoritmi (Cognome-A, Cognome-B, Cognome-C)},
+			pdfauthor={Nome-A Cognome-A, Nome-B Cognome-B, Nome-C Cognome-C},
+            pdfsubject={Documentazione per il lavoro di gruppo - Informatica III - Modulo Progettazione e Algoritmi},
+            pdfcreator={Nome-A Cognome-A, Nome-B Cognome-B, Nome-C Cognome-C},
+            pdfproducer={Nome-A Cognome-A, Nome-B Cognome-B, Nome-C Cognome-C},
+            pdfkeywords={documentazione, lavoro di gruppo, informatica III, Modulo Progettazione e Algoritmi, software, programma, sito web, website, documentation, group work, software design, software engineering, computer engineering, computer science, Scandurra, Patrizia Scandurra},
+            }
+\title{Documentazione del lavoro di gruppo - Informatica III - Modulo Progettazione e Algoritmi}
+\author{Nome-A Cognome-A, Nome-B Cognome-B, Nome-C Cognome-C}
+\date{24 January 2020}
+
+\begin{document}
+\usetagform{equationwithname}
+\frontmatter
+\input{Testo/A01_Copertina.tex} \label{Copertina}
+\bookmark[dest=Cover]{Copertina}
+
+\newpage\null\thispagestyle{empty}\newpage
+
+{\pagestyle{plain}
+\tableofcontents
+\cleardoublepage}
+\addcontentsline{toc}{chapter}{Indice generale} \label{Indice_generale}
+
+{\pagestyle{plain}
+\listoffigures
+\addcontentsline{toc}{chapter}{Indice delle figure} \label{Indice_delle_figure}
+\cleardoublepage}
+
+\listoftables
+\addcontentsline{toc}{chapter}{Indice delle tabelle} \label{Indice_delle_tabelle}
+
+\setcounter{savepage}{\arabic{page}}
+
+%\newpage\null\thispagestyle{empty}\newpage
+
+\mainmatter
+\setcounter{page}{\thesavepage+2}
+
+\setcounter{part}{-1}
+\part{Iterazione 0} \hypertarget{part::\theHpart}{}
+
+\setcounter{chapter}{0}
+
+\chapter{Introduzione} \label{chap:Introduzione} \hypertarget{chapter::\theHchapter}{}
+\input{Testo/C01_Introduzione.tex}
+
+\chapter{Analisi dei requisiti} \label{chap:Analisi dei requisiti} \hypertarget{chapter::\theHchapter}{}
+\input{Testo/C02_Analisi_dei_requisiti.tex}
+
+\chapter{Usecases} \label{chap:Usecases} \hypertarget{chapter::\theHchapter}{}
+\input{Testo/C03_Usecases.tex}
+
+\chapter{Specifiche} \label{chap:Specifiche} \hypertarget{chapter::\theHchapter}{}
+\input{Testo/C04_Specifiche.tex}
+
+\chapter{Architettura} \label{chap:Architettura} \hypertarget{chapter::\theHchapter}{} \input{Testo/C05_Architettura.tex}
+
+\part{Iterazione 1} \hypertarget{part::\theHpart}{}
+
+\chapter{Parser}\label{chap:Parser} \hypertarget{chapter::\theHchapter}{}
+\input{Testo/C16_Parser.tex}
+
+\part{Iterazione 2} \hypertarget{part::\theHpart}{}
+
+\chapter{Template HTML} \label{chap:Template HTML} \hypertarget{chapter::\theHchapter}{}
+\input{Testo/C21_TemplateHtml.tex}
+
+\part{Iterazione 3} \hypertarget{part::\theHpart}{}
+
+\chapter{Algoritmo} \label{chap:Algoritmo} \hypertarget{chapter::\theHchapter}{}
+\input{Testo/C31_Algoritmo.tex}
+
+\part{Iterazione 4} \hypertarget{part::\theHpart}{}
+
+\chapter{Visualizzazione Percorso} \label{chap:Visualizzazione Percorso} \hypertarget{chapter::\theHchapter}{}
+\input{Testo/C41_Planner_Visualizer.tex}
+
+\chapter{Manuale Utente} \label{chap:Manuale utente} \hypertarget{chapter::\theHchapter}{}
+\input{Testo/M01_ManualeUtente.tex}
+
+
+\chapter{Toolchain} \label{chap:Toolchain} \hypertarget{chapter::\theHchapter}{}
+\input{Testo/Z03_Toolchain.tex}
+
+%\cleardoublepage
+
+\bookmarksetup{startatroot}
+\addtocontents{toc}{\bigskip}
+
+\backmatter
+\printbibliography[title=Bibliografia, heading=bibintoc] \label{Bibliografia}
+\newpage
+
+{\chapter*{}
+\input{Testo/Z05_Copertina_dietro.tex}
+\label{Copertina_dietro} \thispagestyle{empty}}
+\end{document}

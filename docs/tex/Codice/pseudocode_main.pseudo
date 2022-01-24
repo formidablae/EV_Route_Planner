@@ -1,0 +1,17 @@
+/**
+ * On search button submittion, run main() calculations.
+ */
+async main() { // runs all the webapp calculations.
+    let validity <- $refs['traveldatavalidateform'].validate() // validates the input of the user.
+    if (validity) { // if valid, the route calculations proceed, otherwise, a warning is returned.
+        Control.Geocoder.latLng( // set routing markers
+        	startPointCoordinates,
+        	startPointCoordinates
+        )
+        travelPath <- buildTravelPathStartToEnd() // build travel path from beginning to end and assign it to travelPath
+        travelPath.addTo(map) // add it to map
+        travelPath.on('routingerror', handleRoutingError) // if route wasn't found handle it using handleRoutingError()
+        travelPath.on('routesfound', await handleRoutesFound) // if route was found handle it using handleRoutesFound()
+	} else {
+		$notify.warning('Form data not valid'} // Form data inserted aren't valid.
+}
